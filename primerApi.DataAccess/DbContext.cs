@@ -27,13 +27,12 @@ namespace primerApi.DataAccess
 
         public IList<T> GetAll()
         {
-            
-            
+            return _lista.ToList();
         }
 
         public T GetbyId(int id)
         {
-            
+            return _lista.Where(e => e.Id.Equals(id)).FirstOrDefault();
         }
 
         public T Save(T entity)
