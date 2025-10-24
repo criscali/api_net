@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using primerApi.Application;
 using primerApi.DataAccess;
+using primerApi.DTOs;
 using primerApi.Entities;
 
 namespace primerApi.Controllers
@@ -12,13 +13,10 @@ namespace primerApi.Controllers
     {
         IApplication<FutbolTeam> _futbolTeamApplication;
         
-        public FutbolTeamController(IApplication<FutbolTeam> futbolTeam)
+        public FutbolTeamController(IApplication<FutbolTeam> futbolTeamApplication)
         { 
-            _futbolTeamApplication = futbolTeam;
-            
+            _futbolTeamApplication = futbolTeamApplication;
         }
-
-
 
         [HttpGet]
         public IActionResult Get()
@@ -26,11 +24,19 @@ namespace primerApi.Controllers
             //var result = _futbolTeamApplication.GetAll();
             return Ok(_futbolTeamApplication.GetAll());
         }
+
         [HttpPost]
-        public IActionResult Post([FromBody] FutbolTeam futbolTeam)
+        public IActionResult Save([FromBody] FutbolTeamDto dto)
         {
-            var result = _futbolTeamApplication.Save(futbolTeam);
-            return Ok(result);
+            //var result = _futbolTeamApplication.Save(dto);
+            //return Ok(result);
+            var f = new FutbolTeam()
+            {
+                Nombre = dto.Nombre,
+                puntaje = dto.puntaje
+                
+            };
+            return Ok(_futbolTeamApplication.Save(f));
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using primerApi.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,19 @@ using System.Threading.Tasks;
 
 namespace primerApi.DataAccess
 {
-    public class ApiDbContext : DbContext
+    public class ApiDbContext : IdentityDbContext
     {
-        public DbSet<FutbolTeam> futbolTeams { get; set; }
+        public DbSet<FutbolTeam> futbolTeam { get; set; }
 
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
         {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Ignore<Entity>();
+
+            base.OnModelCreating(modelBuilder);
         }
 
     }
