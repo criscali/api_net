@@ -1,8 +1,11 @@
-﻿namespace primerApi.DTOs
+﻿using primerApi.Abstraccions;
+
+namespace primerApi.DTOs
 {
-    public class FutbolTeamDto
+    public class FutbolTeamDto 
     {
-        string Nombre { get; set; }
-        int puntaje { get; set; }
+        public string Nombre { get; set; }
+        public int puntaje { get; set; }
+        
     }
 }

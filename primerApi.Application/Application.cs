@@ -3,9 +3,8 @@ using primerApi.Repository;
 
 namespace primerApi.Application
 {
-    public interface IApplication<T>: Icrud<T>
+    public interface IApplication<T> : Icrud<T>
     {
-
     }
     public class Application<T> : IApplication<T> where T : IEntity
     {

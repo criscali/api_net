@@ -8,41 +8,37 @@ using System.Threading.Tasks;
 
 namespace primerApi.DataAccess
 {
-    public class DbContext<T> : IDbContext<T> where T : class, IEntity
+    public class DbContext<T> : IDbContext<T> where T : class,  IEntity
     {
         DbSet<T> _lista;
+        ApiDbContext _apiDbContext;
 
-        public DbContext()
+        public DbContext(ApiDbContext apiDbContext)
         {
-            
+            _apiDbContext = apiDbContext;
+            _lista = apiDbContext.Set<T>();
         }
         public void Delete(int id)
         {
-            var e = _lista.Where(u => u.Id.Equals(id)).FirstOrDefault();
-            if(e != null)
-            {
-                _lista.Remove(e);
-            }
+            _apiDbContext.Set<T>().Remove(GetbyId(id));
         }
 
         public IList<T> GetAll()
         {
-            
-            
+            return _lista.ToList();
         }
 
         public T GetbyId(int id)
         {
-            
+            return _lista.Where(i => i.Equals(id)).FirstOrDefault();
         }
 
         public T Save(T entity)
         {
-            if(entity.Id.Equals(0))
-            {
-                _lista.Add(entity);
-            }
+            _lista.Add(entity);
+            _apiDbContext.SaveChanges();
             return entity;
+
         }
     }
 }
