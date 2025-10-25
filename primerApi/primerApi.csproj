@@ -10,13 +10,22 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\primerApi.Application\primerApi.Application.csproj" />
+    <ProjectReference Include="..\primerApi.DataAccess\primerApi.DataAccess.csproj" />
     <ProjectReference Include="..\primerApi.Entities\primerApi.Entities.csproj" />
     <ProjectReference Include="..\primerApi.Services\primerApi.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Notas\" />
   </ItemGroup>
 
 </Project>
