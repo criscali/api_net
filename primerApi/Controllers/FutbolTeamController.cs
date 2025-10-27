@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using primerApi.Application;
 using primerApi.DataAccess;
@@ -7,6 +9,7 @@ using primerApi.Entities;
 
 namespace primerApi.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class FutbolTeamController : ControllerBase
@@ -33,8 +36,9 @@ namespace primerApi.Controllers
             var f = new FutbolTeam()
             {
                 Nombre = dto.Nombre,
-                puntaje = dto.puntaje
-                
+                puntaje = dto.puntaje,
+                Manager = dto.Manager
+
             };
             return Ok(_futbolTeamApplication.Save(f));
         }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using primerApi.Abstraccions;
 using primerApi.Application;
-using primerApi.Configuration;
 using primerApi.DataAccess;
 using primerApi.Repository;
+using primerApi.Services;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +49,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IApplication<>), typeof(Application<>));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IDbContext<>), typeof(DbContext<>));
+builder.Services.AddScoped<ITokenHandlerService, TokenHandlerService>();
 
 
 var app = builder.Build();

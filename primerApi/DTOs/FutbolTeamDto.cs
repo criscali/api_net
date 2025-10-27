@@ -6,6 +6,7 @@ namespace primerApi.DTOs
     {
         public string Nombre { get; set; }
         public int puntaje { get; set; }
+        public string Manager { get; set; }
         
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace primerApi.Configuration
+﻿namespace primerApi.Services
 {
     public class JwtConfig
     {

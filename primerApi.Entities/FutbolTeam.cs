@@ -6,6 +6,7 @@ namespace primerApi.Entities
     {
         public string Nombre { get; set; }
         public int puntaje { get; set; }
+        public string Manager { get; set; }
 
         public int Id { get; set; }
     }
