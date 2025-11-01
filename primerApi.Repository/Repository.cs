@@ -17,6 +17,12 @@ namespace primerApi.Repository
             lista = new List<T>();
             _dbContext = dbContext;
         }
+
+        public IList<T> CargarExcel(string rutaArchivo)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             _dbContext.Delete(id);
