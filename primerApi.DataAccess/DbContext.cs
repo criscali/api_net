@@ -18,6 +18,12 @@ namespace primerApi.DataAccess
             _apiDbContext = apiDbContext;
             _lista = apiDbContext.Set<T>();
         }
+
+        public IList<T> CargarExcel(string rutaArchivo)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             _apiDbContext.Set<T>().Remove(GetbyId(id));

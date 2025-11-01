@@ -7,6 +7,7 @@ using primerApi.Application;
 using primerApi.DataAccess;
 using primerApi.Repository;
 using primerApi.Services;
+using primerApi.Services.Cargues;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +51,7 @@ builder.Services.AddScoped(typeof(IApplication<>), typeof(Application<>));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IDbContext<>), typeof(DbContext<>));
 builder.Services.AddScoped<ITokenHandlerService, TokenHandlerService>();
+builder.Services.AddScoped(typeof(ICargarExcel<>), typeof(CargarExcel<>));
 
 
 var app = builder.Build();

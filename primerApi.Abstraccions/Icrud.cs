@@ -1,4 +1,6 @@
-﻿namespace primerApi.Abstraccions
+﻿using Microsoft.AspNetCore.Http;
+
+namespace primerApi.Abstraccions
 {
     public interface Icrud<T>
     {
@@ -6,7 +8,7 @@
         IList<T> GetAll();
         T GetbyId(int id);
         void Delete(int id);
-
+        
     }
 
 }

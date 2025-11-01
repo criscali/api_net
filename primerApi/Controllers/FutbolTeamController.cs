@@ -9,15 +9,15 @@ using primerApi.Entities;
 
 namespace primerApi.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class FutbolTeamController : ControllerBase
     {
         IApplication<FutbolTeam> _futbolTeamApplication;
-        
+
         public FutbolTeamController(IApplication<FutbolTeam> futbolTeamApplication)
-        { 
+        {
             _futbolTeamApplication = futbolTeamApplication;
         }
 
@@ -41,6 +41,19 @@ namespace primerApi.Controllers
 
             };
             return Ok(_futbolTeamApplication.Save(f));
+        }
+        [HttpPost("CargarExcel")]
+        public IActionResult CargarExcel(IFormFile archivo)
+        {
+            if (archivo == null || archivo.Length == 0)
+            {
+                return BadRequest("Por favor selecciona un archivo válido.");
+                
+            }
+            _futbolTeamApplication.CrearExcel(archivo);
+            return Ok();
+
+
         }
 
     }
